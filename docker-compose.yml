@@ -1,0 +1,31 @@
+version: "3.2"
+
+services:
+  api:
+    build: ./api
+    container_name: api
+    env_file: api/.env
+    ports:
+      - 3001:3001
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/vendor
+    networks:
+      - network
+
+  app:
+    build: ./app
+    container_name: app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - network
+    depends_on:
+      - api
+
+networks:
+  network:
+    driver: bridge
