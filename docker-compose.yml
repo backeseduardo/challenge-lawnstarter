@@ -11,7 +11,9 @@ services:
       - ./api:/usr/src/app
       - /usr/src/app/vendor
     networks:
-      - network
+      - development_network
+    depends_on:
+      - db
 
   app:
     build: ./app
@@ -22,10 +24,23 @@ services:
       - ./app:/usr/src/app
       - /usr/src/app/node_modules
     networks:
-      - network
+      - development_network
     depends_on:
       - api
 
+  db:
+    image: postgres:13.1-alpine
+    container_name: db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=challenge-lawn-starter
+    networks:
+      - development_network
+
 networks:
-  network:
+  development_network:
     driver: bridge
