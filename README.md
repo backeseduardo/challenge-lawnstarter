@@ -23,3 +23,13 @@ Enjoy it :)
 3. Actually, I've been working like this all my career.
 
 4. I'm hoping to learn more about APIs observability and server's observability. Also, I'm looking forward to learning more about PHP 8. I'm curious about everything, so I hope to learn a lot.
+
+---
+
+## Feedback
+
+1. I enjoyed making a full solution, doing frontend is something that I feel that I'm not good at but I enjoy it.
+
+2. It's a short deadline to complete the challenge for me because I'm currently working, but it's ok since you guys may see how I can handle deadlines.
+
+3. The third requirement could be more specific.
