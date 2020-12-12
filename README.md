@@ -10,6 +10,10 @@ docker-compose up --build
 
 After you see the message `You can now view app in the browser` in the command line you may access `http://localhost:3000` at your browser.
 
+**Hold up!**
+
+You should run `./run-migrations.sh`, this will run the database migrations.
+
 Enjoy it :)
 
 ---
