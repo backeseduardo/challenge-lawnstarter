@@ -39,7 +39,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
-    "dev": "php artisan migrate && php -S 0.0.0.0:3001 -t public",
+    "dev": "php -S 0.0.0.0:3001 -t public",
     "test": "phpunit --testdox"
   }
 }
