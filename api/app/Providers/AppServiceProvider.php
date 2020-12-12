@@ -16,5 +16,6 @@ class AppServiceProvider extends ServiceProvider
     $this->app->bind('App\Services\StarWarsAPIServiceInterface', 'App\Services\StarWarsAPIService');
     $this->app->bind('App\Services\StatisticLogServiceInterface', 'App\Services\StatisticLogService');
     $this->app->bind('App\Services\CreateStatisticServiceInterface', 'App\Services\CreateStatisticService');
+    $this->app->bind('App\Services\MeasureExecutionTimeServiceInterface', 'App\Services\MeasureExecutionTimeService');
   }
 }

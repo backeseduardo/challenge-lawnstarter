@@ -4,5 +4,5 @@ namespace App\Services;
 
 interface StatisticLogServiceInterface
 {
-  public function log(string $resource, string $searchTerm);
+  public function log(string $resource, string $searchTerm, int $executionTimeInMilliseconds);
 }

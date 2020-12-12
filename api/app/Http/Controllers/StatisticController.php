@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
+use App\Models\StatisticLog;
+use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller;
 
 class StatisticController extends Controller
@@ -24,6 +26,7 @@ class StatisticController extends Controller
         'term' => $statistic->most_searched_film,
         'times' => $statistic->most_searched_film_times
       ],
+      'average_time_response' => $statistic->average_time_response
     ];
   }
 }

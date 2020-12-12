@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StarWarsAPIResourceEnum;
+use App\Services\MeasureExecutionTimeServiceInterface;
 use App\Services\StarWarsAPIServiceInterface;
 use App\Services\StatisticLogServiceInterface;
 use Illuminate\Http\Request;
@@ -13,15 +14,17 @@ class StarWarsAPIController extends Controller
 {
   private $starWarsAPIService;
   private $statisticLogService;
+  private $measureExecutionTimeService;
 
   public function __construct(
     StarWarsAPIServiceInterface $starWarsAPIService,
-    StatisticLogServiceInterface $statisticLogService
+    StatisticLogServiceInterface $statisticLogService,
+    MeasureExecutionTimeServiceInterface $measureExecutionTimeService
   ) {
     $this->starWarsAPIService = $starWarsAPIService;
     $this->statisticLogService = $statisticLogService;
+    $this->measureExecutionTimeService = $measureExecutionTimeService;
   }
-
   public function index(Request $request, string $resource)
   {
     $searchTerm = $request->input('q');
@@ -30,9 +33,11 @@ class StarWarsAPIController extends Controller
 
     $this->validateSearchTerm($searchTerm);
 
-    $this->statisticLogService->log($resource, $searchTerm);
+    [$executionTimeInMilliseconds, $response] = $this->measureExecutionTimeService->execute(fn() => $this->starWarsAPIService->find($resource, $searchTerm));
 
-    return $this->starWarsAPIService->find($resource, $searchTerm);
+    $this->statisticLogService->log($resource, $searchTerm, $executionTimeInMilliseconds);
+
+    return $response;
   }
 
   private function validateResource(string $resource): void

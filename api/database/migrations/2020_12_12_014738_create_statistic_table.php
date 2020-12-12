@@ -19,6 +19,7 @@ class CreateStatisticTable extends Migration
       $table->integer('most_searched_person_times')->nullable();
       $table->string('most_searched_film')->nullable();
       $table->integer('most_searched_film_times')->nullable();
+      $table->integer('average_time_response')->nullable();
       $table->timestamps();
     });
   }

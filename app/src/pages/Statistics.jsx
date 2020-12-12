@@ -92,6 +92,30 @@ export default function Statistics() {
             )}
           </div>
         </div>
+
+        <div className="mt-7">
+          <h2 className="font-bold">Average response time</h2>
+
+          <hr className="mt-2-5 mb-1 border-gray-dark" />
+
+          {isLoading && (
+            <span className="font-bold text-sm text-gray-dark">Loading...</span>
+          )}
+
+          {isLoading === false && !statistics?.average_time_response && (
+            <span className="font-bold text-sm text-gray-dark">
+              No results yeat.
+            </span>
+          )}
+
+          {isLoading === false && statistics?.average_time_response && (
+            <span className="folt-bold">
+              {statistics?.average_time_response / 1000}
+
+              {' seconds'}
+            </span>
+          )}
+        </div>
       </div>
 
       <div>

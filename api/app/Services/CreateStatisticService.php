@@ -27,6 +27,10 @@ class CreateStatisticService implements CreateStatisticServiceInterface
     $statistic->most_searched_film = $mostSearchedFilm->search_term;
     $statistic->most_searched_film_times = $mostSearchedFilm->times;
 
+    $averageExecutionTimeInMilliseconds = $this->getAverageExecutionTime();
+
+    $statistic->average_time_response = $averageExecutionTimeInMilliseconds;
+
     $statistic->save();
   }
 
@@ -37,5 +41,12 @@ class CreateStatisticService implements CreateStatisticServiceInterface
       ->groupBy('search_term')
       ->orderBy('times', 'desc')
       ->first();
+  }
+
+  private function getAverageExecutionTime()
+  {
+    $statisticAverage = StatisticLog::select(DB::raw('avg(execution_time_in_milliseconds) average_execution_time'))->first();
+
+    return round($statisticAverage->average_execution_time);
   }
 }

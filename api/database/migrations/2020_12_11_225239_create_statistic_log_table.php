@@ -17,6 +17,7 @@ class CreateStatisticLogTable extends Migration
       $table->id();
       $table->enum('search_resource', ['people', 'films']);
       $table->string('search_term');
+      $table->integer('execution_time_in_milliseconds')->nullable();
       $table->timestamps();
     });
   }
