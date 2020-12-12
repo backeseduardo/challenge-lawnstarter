@@ -1,0 +1,2 @@
+* * * * * cd /usr/src/app && /usr/local/bin/php artisan schedule:run >> /usr/src/app/scheduler/log/schedule-run.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job

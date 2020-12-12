@@ -2,7 +2,9 @@ FROM php:7.4
 
 RUN apt-get update && apt-get install -y \
       unzip \
-      libpq-dev
+      libpq-dev \
+      cron \
+      vim
 
 RUN docker-php-ext-install pdo pdo_pgsql
 
@@ -14,6 +16,8 @@ COPY . .
 
 RUN composer install
 
+RUN crontab scheduler/crontab
+
 EXPOSE 3001
 
-CMD ["composer", "run", "dev"]
+CMD (cron) && composer run dev

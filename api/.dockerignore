@@ -1,2 +1,4 @@
 vendor
 .phpunit*
+crontab.log
+scheduler/log/**

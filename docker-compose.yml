@@ -3,7 +3,7 @@ version: "3.2"
 services:
   api:
     build: ./api
-    container_name: api
+    container_name: challange-lawn-starter-api
     env_file: api/.env
     ports:
       - 3001:3001
@@ -17,7 +17,7 @@ services:
 
   app:
     build: ./app
-    container_name: app
+    container_name: challange-lawn-starter-app
     ports:
       - 3000:3000
     volumes:
@@ -30,15 +30,11 @@ services:
 
   db:
     image: postgres:13.1-alpine
-    container_name: db
+    container_name: challange-lawn-starter-db
     restart: always
     env_file: api/.env
     ports:
       - 5432:5432
-    environment:
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_DATABASE}
     networks:
       - development_network
 
