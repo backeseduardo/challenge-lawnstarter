@@ -6,6 +6,7 @@ import './index.css';
 import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
 import PersonDetails from './pages/PersonDetails';
+import Statistics from './pages/Statistics';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -13,6 +14,9 @@ ReactDOM.render(
     <Router>
       <Layout>
         <Switch>
+          <Route path="/statistics">
+            <Statistics />
+          </Route>
           <Route path="/person-details">
             <PersonDetails />
           </Route>
