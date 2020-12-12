@@ -2,14 +2,17 @@
 
 namespace App\Services;
 
+use App\Enums\StarWarsAPIResourceEnum;
 use App\Models\StatisticLog;
+use Error;
 
 class StatisticLogService implements StatisticLogServiceInterface
 {
-  public function log(string $searchTerm)
+  public function log(string $resource, string $searchTerm)
   {
     $log = new StatisticLog();
 
+    $log->search_resource = $resource;
     $log->search_term = $searchTerm;
 
     $log->save();

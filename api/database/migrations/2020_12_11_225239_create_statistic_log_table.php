@@ -15,6 +15,7 @@ class CreateStatisticLogTable extends Migration
   {
     Schema::create('statistic_log', function (Blueprint $table) {
       $table->id();
+      $table->enum('search_resource', ['people', 'films']);
       $table->string('search_term');
       $table->timestamps();
     });

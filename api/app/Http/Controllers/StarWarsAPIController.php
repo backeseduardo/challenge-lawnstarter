@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StarWarsAPIResourceEnum;
 use App\Services\StarWarsAPIServiceInterface;
 use App\Services\StatisticLogServiceInterface;
 use Illuminate\Http\Request;
@@ -29,14 +30,14 @@ class StarWarsAPIController extends Controller
 
     $this->validateSearchTerm($searchTerm);
 
-    $this->statisticLogService->log($searchTerm);
+    $this->statisticLogService->log($resource, $searchTerm);
 
     return $this->starWarsAPIService->find($resource, $searchTerm);
   }
 
   private function validateResource(string $resource): void
   {
-    if (in_array($resource, ['people', 'films']) === false) {
+    if (in_array($resource, [StarWarsAPIResourceEnum::PEOPLE, StarWarsAPIResourceEnum::FILMS]) === false) {
       throw new HttpException(400);
     }
   }

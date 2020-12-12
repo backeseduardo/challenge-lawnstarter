@@ -13,8 +13,5 @@
 |
 */
 
-$router->get('/debug-sentry', function() {
-  throw new Exception('My first Sentry error!');
-});
-
+$router->get('/statistics', 'StatisticController@index');
 $router->get('/{resource}', 'StarWarsAPIController@index');
