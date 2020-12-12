@@ -12,7 +12,9 @@ After you see the message `You can now view app in the browser` in the command l
 
 **Hold up!**
 
-You should run `./run-migrations.sh`, this will run the database migrations.
+Ensure that `./run-migrations.sh` has execution permission (`chmod +x ./run-migrations.sh`).
+
+After thatm run `./run-migrations.sh`, this will run the database migrations.
 
 Enjoy it :)
 
