@@ -93,7 +93,6 @@ $app->middleware([
 
 $app->register(Sentry\Laravel\ServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 $stack = GuzzleHttp\HandlerStack::create();

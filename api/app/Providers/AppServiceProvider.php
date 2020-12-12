@@ -14,5 +14,6 @@ class AppServiceProvider extends ServiceProvider
   public function register()
   {
     $this->app->bind('App\Services\StarWarsAPIServiceInterface', 'App\Services\StarWarsAPIService');
+    $this->app->bind('App\Services\StatisticLogServiceInterface', 'App\Services\StatisticLogService');
   }
 }

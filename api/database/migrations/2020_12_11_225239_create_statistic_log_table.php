@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatisticsLogTable extends Migration
+class CreateStatisticLogTable extends Migration
 {
   /**
    * Run the migrations.
@@ -13,9 +13,9 @@ class CreateStatisticsLogTable extends Migration
    */
   public function up()
   {
-    Schema::create('statistics_log', function (Blueprint $table) {
+    Schema::create('statistic_log', function (Blueprint $table) {
       $table->id();
-      $table->string('search-term');
+      $table->string('search_term');
       $table->timestamps();
     });
   }
@@ -27,6 +27,6 @@ class CreateStatisticsLogTable extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('statistics_log');
+    Schema::dropIfExists('statistic_log');
   }
 }

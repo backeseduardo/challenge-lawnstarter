@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\StarWarsAPIServiceInterface;
+use App\Services\StatisticLogServiceInterface;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Laravel\Lumen\Routing\Controller;
@@ -10,10 +11,14 @@ use Laravel\Lumen\Routing\Controller;
 class StarWarsAPIController extends Controller
 {
   private $starWarsAPIService;
+  private $statisticLogService;
 
-  public function __construct(StarWarsAPIServiceInterface $starWarsAPIService)
-  {
+  public function __construct(
+    StarWarsAPIServiceInterface $starWarsAPIService,
+    StatisticLogServiceInterface $statisticLogService
+  ) {
     $this->starWarsAPIService = $starWarsAPIService;
+    $this->statisticLogService = $statisticLogService;
   }
 
   public function index(Request $request, string $resource)
@@ -23,6 +28,8 @@ class StarWarsAPIController extends Controller
     $this->validateResource($resource);
 
     $this->validateSearchTerm($searchTerm);
+
+    $this->statisticLogService->log($searchTerm);
 
     return $this->starWarsAPIService->find($resource, $searchTerm);
   }
