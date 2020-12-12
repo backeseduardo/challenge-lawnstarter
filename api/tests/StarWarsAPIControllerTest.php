@@ -4,6 +4,17 @@ use Illuminate\Support\Facades\Http;
 
 class StarWarsAPIControllerTest extends TestCase
 {
+  protected function setUp(): void
+  {
+    parent::setUp();
+  }
+
+  public function testShouldEnviroment(): void
+  {
+    $this->assertEquals('sqlite', getenv('DB_CONNECTION'));
+    $this->assertEquals('testing', getenv('APP_ENV'));
+  }
+
   public function testShouldFindPeople(): void
   {
     Http::fake([
